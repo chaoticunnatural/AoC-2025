@@ -15,19 +15,17 @@ while True:
 
     for row in range(height):
         for column in range(width):
-            if rolls_rows[row][column] != "@":
+            if rolls_rows[row][column] == ".":
                 continue
 
-            adjacent: int = sum(
-                1
-                for adj_r, adj_c in adj_positions
-                if 0 <= row + adj_r < height
-                and 0 <= column + adj_c < width
+            adjacent: int = sum( # add one to adjacent rolls if the string at a given position is "@"
+                1 for adj_r, adj_c in adj_positions
+                if 0 <= row + adj_r < height and 0 <= column + adj_c < width
                 and rolls_rows[row + adj_r][column + adj_c] == "@"
             )
 
             if adjacent < 4:
-                accessible += 1
+                accessible += 1 # if accessible, add to rolls to remove
                 to_remove.append((row, column))
 
     if not to_remove:
@@ -35,5 +33,6 @@ while True:
 
     for r, c in to_remove:
         rolls_rows[r][c] = "."
+
 
 print(accessible)
