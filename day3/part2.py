@@ -1,8 +1,8 @@
-banks_f = open("input.txt", "r")
+import time
+start: float = time.perf_counter()
 
 joltage: int = 0
-
-for bank in banks_f:
+for bank in open("input.txt", "r"):
     joltages: list[str] = list(bank.strip())
     to_remove: int = len(joltages) - 12 # maximum amount of characters we can remove
 
@@ -18,3 +18,5 @@ for bank in banks_f:
     joltage += int("".join(batteries[:12])) # trim off excess smaller numbers
 
 print(joltage)
+end: float = time.perf_counter()
+print(f"{(end - start)*100} ms")

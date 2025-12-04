@@ -1,3 +1,5 @@
+import time
+start: float = time.perf_counter()
 rolls_rows: list[list[str]] = [list(row) for row in open("input.txt", "r").read().splitlines()]
 
 accessible: int = 0
@@ -33,6 +35,6 @@ while True:
 
     for r, c in to_remove:
         rolls_rows[r][c] = "."
-
-
 print(accessible)
+end: float = time.perf_counter()
+print(f"{(end - start)*100} ms")
