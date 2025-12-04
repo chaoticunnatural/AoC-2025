@@ -6,10 +6,10 @@ accessible: int = 0
 height: int = len(rolls_rows)
 width: int = len(rolls_rows[0])
 
-adj_positions: list[tuple[int, int]] = [
+adj_positions: list[tuple[int, int]] = [ # 8 adjacent positions rolls might be in relative to any roll which would be at (0, 0)
     (-1, -1), (-1, 0), (-1, 1),
-    (0, -1),           (0, 1),
-    (1, -1),  (1, 0),  (1, 1)
+    ( 0, -1),          ( 0, 1), # yes i did format it like this it looks nice okay
+    ( 1, -1), ( 1, 0), ( 1, 1)
 ]
 
 while True:
@@ -30,7 +30,7 @@ while True:
                 accessible += 1 # if accessible, add to rolls to remove
                 to_remove.append((row, column))
 
-    if not to_remove:
+    if not to_remove: # stop if there is nothing to remove (no more accessible rolls)
         break
 
     for r, c in to_remove:
