@@ -35,6 +35,8 @@ while True:
 
     for r, c in to_remove:
         rolls_rows[r][c] = "."
+        to_remove.pop(to_remove.index((r, c)))
+
 print(accessible)
 end: float = time.perf_counter()
 print(f"{(end - start)*100} ms")
